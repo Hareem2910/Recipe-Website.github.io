@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Food Website</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header>
+    
+    <h1>Food Website 🍔</h1>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="recipes.html">Recipes</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://yourwebsite.com" target="_blank">My Website 🌐</a>
+  </nav>
+
+</header>
+    <input type="text" id="search" placeholder="Search recipes...">
+    </nav>
+  </header>
+  <section class="hero">
+  <h2>Delicious Food Recipes 🍕</h2>
+  <p>Cook like a chef at home</p>
+</section>
+
+
+
+  <!-- Main Content -->
+  <h2>Welcome to My Food Website</h2>
+  <p>Explore delicious recipes</p>
+  <h2>Our Recipes 🍕</h2>
+  <div class="recipes">
+  
+<div class="card">
+    <img src="pizza.jpg">
+  
+  <h3>Pizza</h3>
+  <button class="like-btn">❤️ Like <span>0</span></button>
+    <p>Pizza is a delicious Italian dish made with cheese, tomato sauce, 
+    and fresh toppings. It is loved all around the world.
+  </p>
+    <a href="pizza.html" class="read-btn">Read More</a>
+</div>
+
+
+
+<div class="card">
+    <img src="burger.jpg">
+  <h3>Burger</h3>
+  <button class="like-btn">❤️ Like <span>0</span></button>
+   <p>
+    Burger is a fast food favorite made with juicy meat, fresh veggies, 
+    and soft buns. Perfect for a quick meal.
+  </p>
+  <a href="burger.html" class="read-btn">Read More</a>
+</div>
+
+<div class="card">
+<img src="pasta.jpg">
+  <h3>Pasta</h3>
+<button class="like-btn">❤️ Like <span>0</span></button>
+  <p>
+    Pasta is a classic Italian food made with creamy or tomato-based sauces. 
+    It is simple, tasty, and comforting.
+  </p>
+  <a href="pasta.html" class="read-btn">Read More</a>
+
+</div>
+
+</div>
+<script>
+const searchInput = document.getElementById("search");
+const cards = document.querySelectorAll(".card");
+
+searchInput.addEventListener("keyup", function() {
+  const value = searchInput.value.toLowerCase();
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+
+    if (text.includes(value)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+});
+</script>
+<script>
+const likeButtons = document.querySelectorAll(".like-btn");
+
+likeButtons.forEach((button, index) => {
+  let countSpan = button.querySelector("span");
+
+  // Load saved value
+  let saved = localStorage.getItem("like-" + index);
+  if (saved) {
+    countSpan.innerText = saved;
+  }
+
+  button.addEventListener("click", () => {
+    let count = parseInt(countSpan.innerText) + 1;
+    countSpan.innerText = count;
+
+    // Save value
+    localStorage.setItem("like-" + index, count);
+  });
+});
+</script>
+
+</body>
+</html>
